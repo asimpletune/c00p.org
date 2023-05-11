@@ -2,6 +2,8 @@
 
 Just an alternative to home ownership, by helping people organize so they can share the collective savings.
 
+![](/static/illo/mockup_social-banner.jpg)
+
 ## Usage
 
 Here's how you do stuff:
