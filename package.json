@@ -16,6 +16,7 @@
   "author": "Spencer Scorcelletti",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "tailwindcss": "^3.3.1"
   }
