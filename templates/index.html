@@ -11,15 +11,26 @@
   <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 
-{# 👇 Note: background image is configured in tailwind.config.js 👇 #}
-
 <body class="bg-blue-700">
+  <header class="max-w-7xl mx-auto overflow-hidden">
+    <h1 class="max-w-prose
+      mx-8 mt-10 lg:mx-20
+      flex flex-col
+      gap-3">
+      {# <span class="font-playfair-display font-bold text-[#EE95F5]
+      text-4xl md:text-7xl">For some things...</span> #}
+      <span class="font-playfair-display text-[#FEF3C7]
+      text-5xl sm:text-8xl lg:text-9xl">I don't mind sharing,</span>
+      <span class="mt-8 lg:mt-20 font-playfair-display font-bold text-[#EE95F5]
+      text-4xl sm:text-7xl lg:text-8xl">Do you?</span>
+    </h1>
+    <img class="w-full md:w-[110%] -mt-20 md:-mt-52 lg:-mt-64" src="/illo/demo-structure@0.5x.webp" alt="">
+  </header>
   <article class="my-[8vh] mx-auto px-4 prose md:prose-xl prose-invert">
-    {{ section.content | safe }}
-
+    <section id="intro">
+      {{ section.content | safe }}
+    </section>
     {% set data = load_data(path="README.md") %}
-
-    {{ data | markdown | safe }}
   </article>
 </body>
 

@@ -2,6 +2,6 @@
 template = "index.html"
 +++
 
-# Hello, world!
+# What is this site?
 
-The following is inserted from the project's [README](https://github.com/asimpletune/zola-tailwindcss#readme) 👇👇👇
+My name is [Spence](https://spenc.es/), and I want to organize a group of people who are interested in buying a building together, so we can each have our own apartment.
