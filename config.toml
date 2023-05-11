@@ -13,12 +13,7 @@ build_search_index = true
 highlight_code = true
 
 # More info at https://www.getzola.org/documentation/content/syntax-highlighting/
-highlight_theme = "css"
-
-highlight_themes_css = [
-  { theme = "base16-ocean-dark", filename = "syntax-theme-dark.css" },
-  { theme = "base16-ocean-light", filename = "syntax-theme-light.css" },
-]
+highlight_theme = "base16-ocean-dark"
 
 [extra]
 # Put all your custom variables here
