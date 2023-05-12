@@ -3,9 +3,9 @@
 
 {# Variable declarations #}
 {% set lang = section.extra.lang %}
-{% set title_toml = load_data(path="snippets/01_title" ~ lang ~ ".toml", format="toml") %}
-{% set intro_md = load_data(path="snippets/02_intro" ~ lang ~ ".md") %}
-{% set waitlist_md = load_data(path="snippets/waitlist" ~ lang ~ ".md") %}
+{% set title_toml = load_data(path="content/snippets/01_title" ~ lang ~ ".toml", format="toml") %}
+{% set intro_md = load_data(path="content/snippets/02_intro" ~ lang ~ ".txt") %}
+{% set waitlist_md = load_data(path="content/snippets/waitlist" ~ lang ~ ".txt") %}
 
 <head>
   <meta charset="UTF-8">
@@ -106,6 +106,7 @@
       </form>
     </section>
   </article>
+  {% include "footer.html" %}
 </body>
 
 </html>
