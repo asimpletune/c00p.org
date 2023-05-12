@@ -1,5 +1,7 @@
 # Changelog
 
+## v1.0.1 (TODO)
+
 ## v1.0.0 (2023-05-11)
 
 - add form for people to join waitlist

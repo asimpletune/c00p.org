@@ -1,4 +1,4 @@
-# Are you interested?
+# Are you interested
 
 I am really hoping that this is something that other people will find exciting.
 If this sounds like something you'd be interested in let me know by adding your name to this waitlist. If I don't hear from anyone then I'll know not to waste my time.
