@@ -17,7 +17,7 @@
   <meta property="og:title" content="I don't mind sharing, do you? Co-op's are a path to 🏡">
   <meta property="og:description"
     content="My name is Spence, and I want to form a group of people who are interested in buying a building together, so we can each have our own apartment and save $">
-  <meta property="og:image" content="/static/illo/mockup_social-banner.jpg">
+  <meta property="og:image" content="/illo/mockup_social-banner.jpg">
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="I don't mind sharing, do you? Co-op's are a path to 🏡">
   <meta name="twitter:description"
     content="My name is Spence, and I want to form a group of people who are interested in buying a building together, so we can each have our own apartment and save $">
-  <meta name="twitter:image" content="/static/illo/mockup_social-banner.jpg">
+  <meta name="twitter:image" content="/illo/mockup_social-banner.jpg">
 
   {# Main CSS styling goes here, which is output by Tailwind #}
   <link rel="stylesheet" type="text/css" href="/style.css">
@@ -49,9 +49,57 @@
   </header>
   <article class="my-[8vh] mx-auto px-4 prose md:prose-xl prose-invert">
     <section id="intro">
-      {{ section.content | safe }}
+      {% set intro_md = load_data(path="templates/landing_sections/intro.md") %}
+      {{ intro_md | markdown | safe }}
     </section>
-    {% set data = load_data(path="README.md") %}
+    <section id="waitlist">
+      {% set waitlist_md = load_data(path="templates/landing_sections/waitlist.md") %}
+      {{ waitlist_md | markdown | safe }}
+
+      <form action="/waitlist/submit" method='post'>
+        <div class="
+        flex flex-col
+        gap-4
+        md:grid
+        md:grid-cols-2">
+
+          {# Name #}
+          <label>
+            <span class="font-bold
+            text-2xl md:text-3xl">Name</span>
+            <span class="text-red-400 align-top">*</span>
+            <input type="text" required name="name" placeholder="Your Name" class="w-full rounded-lg text-black
+              px-2 py-2
+              md:px-4" />
+          </label>
+
+          {# Email #}
+          <label>
+            <span class="font-bold
+            text-2xl md:text-3xl">Email</span>
+            <span class="text-red-400 align-top">*</span> <input type="email" required name="email"
+              placeholder="YourEmail@gmail.com" class="w-full rounded-lg text-black
+              px-2 py-2
+              md:px-4" />
+          </label>
+
+          {# Optional Message #}
+          <label class="col-span-2">
+            <span class="font-bold
+            text-2xl md:text-3xl">Thoughts?</span>
+            <textarea rows="2" name="message" placeholder="optional"
+              class="w-full rounded-lg text-black px-4 py-2"></textarea>
+          </label>
+
+          {# Send button #}
+          <input type='submit' value='Send' class="
+            col-span-2
+            border border-white rounded-lg
+            px-4 py-2
+            hover:cursor-pointer hover:bg-gray-800/50" />
+        </div>
+      </form>
+    </section>
   </article>
 </body>
 
