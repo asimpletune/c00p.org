@@ -5,25 +5,101 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+
+  <!-- HTML Meta Tags (Generated via https://opengraph.dev) -->
+  <title>Co-op 🏘️: an affordable path to home ownership</title>
+  <meta name="description"
+    content="I don't mind sharing, do you? I propose sharing the risk and splitting the reward. Get an apartment in Italy, by banding together and buying the whole building!">
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://next-version.coop.pages.dev">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="I don't mind sharing, do you? Co-op's are a path to 🏡">
+  <meta property="og:description"
+    content="My name is Spence, and I want to form a group of people who are interested in buying a building together, so we can each have our own apartment and save $">
+  <meta property="og:image" content="/illo/mockup_social-banner.jpg">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="next-version.coop.pages.dev">
+  <meta property="twitter:url" content="https://next-version.coop.pages.dev">
+  <meta name="twitter:title" content="I don't mind sharing, do you? Co-op's are a path to 🏡">
+  <meta name="twitter:description"
+    content="My name is Spence, and I want to form a group of people who are interested in buying a building together, so we can each have our own apartment and save $">
+  <meta name="twitter:image" content="/illo/mockup_social-banner.jpg">
 
   {# Main CSS styling goes here, which is output by Tailwind #}
   <link rel="stylesheet" type="text/css" href="/style.css">
-
-  {# Syntax highlighting is loaded here (and configured in `config.toml`) #}
-  <link rel="stylesheet" type="text/css" href="/syntax-theme-dark.css" media="(prefers-color-scheme: dark)" />
-  <link rel="stylesheet" type="text/css" href="/syntax-theme-light.css" media="(prefers-color-scheme: light)" />
 </head>
 
-{# 👇 Note: background image is configured in tailwind.config.js 👇 #}
+<body class="bg-blue-700">
+  <header class="max-w-7xl mx-auto overflow-hidden">
+    <h1 class="max-w-prose
+      mx-8 mt-10 lg:mx-20
+      flex flex-col
+      gap-3">
+      {# <span class="font-playfair-display font-bold text-[#EE95F5]
+      text-4xl md:text-7xl">For some things...</span> #}
+      <span class="font-playfair-display text-[#FEF3C7]
+      text-5xl sm:text-8xl lg:text-9xl">I don't mind sharing,</span>
+      <span class="mt-8 lg:mt-20 font-playfair-display font-bold text-[#EE95F5]
+      text-4xl sm:text-7xl lg:text-8xl">Do you?</span>
+    </h1>
+    <img class="w-full md:w-[110%] -mt-20 md:-mt-52 lg:-mt-64" src="/illo/demo-structure@0.5x.webp" alt="">
+  </header>
+  <article class="my-[8vh] mx-auto px-4 prose md:prose-xl prose-invert">
+    <section id="intro">
+      {% set intro_md = load_data(path="templates/landing_sections/intro.md") %}
+      {{ intro_md | markdown | safe }}
+    </section>
+    <section id="waitlist">
+      {% set waitlist_md = load_data(path="templates/landing_sections/waitlist.md") %}
+      {{ waitlist_md | markdown | safe }}
 
-<body class="bg-beams-light dark:bg-beams-dark bg-cover bg-fixed bg-center">
-  <article class="my-[8vh] mx-auto px-4 prose md:prose-xl dark:prose-invert ">
-    {{ section.content | safe }}
+      <form action="/waitlist/submit" method='post'>
+        <div class="
+        flex flex-col
+        gap-4
+        md:grid
+        md:grid-cols-2">
 
-    {% set data = load_data(path="README.md") %}
+          {# Name #}
+          <label>
+            <span class="font-bold
+            text-2xl md:text-3xl">Name</span>
+            <span class="text-red-400 align-top">*</span>
+            <input type="text" required name="name" placeholder="Your Name" class="w-full rounded-lg text-black
+              px-2 py-2
+              md:px-4" />
+          </label>
 
-    {{ data | markdown | safe }}
+          {# Email #}
+          <label>
+            <span class="font-bold
+            text-2xl md:text-3xl">Email</span>
+            <span class="text-red-400 align-top">*</span> <input type="email" required name="email"
+              placeholder="YourEmail@gmail.com" class="w-full rounded-lg text-black
+              px-2 py-2
+              md:px-4" />
+          </label>
+
+          {# Optional Message #}
+          <label class="col-span-2">
+            <span class="font-bold
+            text-2xl md:text-3xl">Thoughts?</span>
+            <textarea rows="2" name="message" placeholder="optional"
+              class="w-full rounded-lg text-black px-4 py-2"></textarea>
+          </label>
+
+          {# Send button #}
+          <input type='submit' value='Send' class="
+            col-span-2
+            border border-white rounded-lg
+            px-4 py-2
+            hover:cursor-pointer hover:bg-gray-800/50" />
+        </div>
+      </form>
+    </section>
   </article>
 </body>
 

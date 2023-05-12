@@ -1,11 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: ['./templates/**/*.html', './static/**/*.{html,js}'],
   theme: {
     extend: {},
-    backgroundImage: {
-      'beams-dark': 'url("/beams.webp"), linear-gradient(#0D172B, #12213F)',
-      'beams-light': 'url("/beams.webp"), linear-gradient(#CDFFF9, #FFDCDF)',
+    backgroundImage: {},
+    fontFamily: {
+      'playfair-display': ['Playfair Display', ...defaultTheme.fontFamily.serif],
+      'fira-sans': ['Fira Sans', ...defaultTheme.fontFamily.sans],
     }
   },
   plugins: [
