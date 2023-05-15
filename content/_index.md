@@ -2,5 +2,5 @@
 template = "index.html"
 
 [extra]
-lang = "" # e.g. .it, or nothing for default
+lang_ext = "" # e.g. .it, or nothing for default
 +++

@@ -1,0 +1,16 @@
+<footer class="border-t-2  px-4 py-2 border-emerald-400">
+  <div class="flex justify-end">
+    <div id="language-settings" class="font-playfair-display text-yellow-50">
+      <span class="text-xl font-bold">Language:</span>
+      {% if lang != "en"%}
+      {% set path_without_lang = current_path | replace(from="/it/", to="/") %}
+      {% else %}
+      {% set path_without_lang = current_path %}
+      {% endif %}
+      <ul class="text-lg list-disc list-inside underline">
+        <li><a href="{{ path_without_lang }}">English</a></li>
+        <li><a href="/it/{{ current_path }}">Italiano</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

@@ -2,10 +2,10 @@
 <html lang="en">
 
 {# Variable declarations #}
-{% set lang = section.extra.lang %}
-{% set title_toml = load_data(path="content/snippets/01_title" ~ lang ~ ".toml", format="toml") %}
-{% set intro_md = load_data(path="content/snippets/02_intro" ~ lang ~ ".txt") %}
-{% set waitlist_md = load_data(path="content/snippets/waitlist" ~ lang ~ ".txt") %}
+{% set lang_ext = section.extra.lang_ext %}
+{% set title_obj = load_data(path="content/snippets/01_title" ~ lang_ext ~ ".toml", format="toml") %}
+{% set intro_md = load_data(path="content/snippets/02_intro" ~ lang_ext ~ ".txt") %}
+{% set waitlist_md = load_data(path="content/snippets/waitlist" ~ lang_ext ~ ".txt") %}
 
 <head>
   <meta charset="UTF-8">
@@ -42,15 +42,15 @@
   <header class="max-w-7xl mx-auto overflow-hidden">
     {{ section.content | safe }}
     <h1 class="max-w-prose
-      mx-8 mt-10 lg:mx-20
+      mx-4 mt-10 lg:mx-20
       flex flex-col
       gap-3">
       {# <span class="font-playfair-display font-bold text-[#EE95F5]
       text-4xl md:text-7xl">For some things...</span> #}
       <span class="font-playfair-display text-[#FEF3C7]
-      text-5xl sm:text-8xl lg:text-9xl">{{ title_toml.p1 }}</span>
+      text-5xl sm:text-8xl lg:text-9xl">{{ title_obj.p1 }}</span>
       <span class="mt-8 lg:mt-20 font-playfair-display font-bold text-[#EE95F5]
-      text-4xl sm:text-7xl lg:text-8xl">{{ title_toml.p2 }}</span>
+      text-4xl sm:text-7xl lg:text-8xl">{{ title_obj.p2 }}</span>
     </h1>
     <img class="w-full md:w-[110%] -mt-20 md:-mt-52 lg:-mt-64" src="/illo/demo-structure@0.5x.webp" alt="">
   </header>
