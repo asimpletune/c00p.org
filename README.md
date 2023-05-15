@@ -1,8 +1,8 @@
 # c00p.org
 
-Just an alternative to home ownership, by helping people organize so they can share the collective savings.
+Just an alternative to home ownership, by helping people organize so they can share the collective savings. [https://c00p.org](https://c00p.org)
 
-![](/static/illo/mockup_social-banner.jpg)
+![c00p.org's open graph social preview (horizontal)](/static/illo/mockup_social-banner.jpg)
 
 ## Usage
 
@@ -43,10 +43,18 @@ This site is deployed using [cloudflare pages](https://pages.cloudflare.com). Ac
 
 Here are some additional things to know about deployments
 
-* There is a file called `_headers` which is a convention used by cloudflare pages to set HTTP headers for the static site
+* There is a file called [`_headers`](https://github.com/asimpletune/c00p.org/blob/localization-support/static/_headers) which is a convention used by cloudflare pages to set HTTP headers for the static site
 * `ZOLA_VERSION=0.17.2` must be explicitly set in cloudflare pages build settings
 * `NODE_VERSION=14.0.0` must be explicitly set in cloudflare pages build settings
 * There's a file, `CHANGELOG.md`, that helps track what's changed as the site evolves
+
+## Multilingual
+
+The site is designed to be multilingual, and currently offers English and Italian options. English is the default and serves content from the bare [`https://c00p.org/`](https://c00p.org/) path, whereas all others serve content behind a prefix consisting of the language's 2-letter abbreviation, e.g. [`https://c00p.org/it/`](https://c00p.org/it/) for Italian.
+
+Content is routed using a page rule which checks for the client's `Accept-Language` header:
+
+![Cloudflare page rule to route the Italian speakers to Italian language version of site](/.site-documentation/cloudflare-multilingual-page-rule.png)
 
 ## Notes:
 
