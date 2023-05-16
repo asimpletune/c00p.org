@@ -2,7 +2,8 @@
 
 ## v1.0.1 (TODO)
 
-- add preliminary multilingual support
+- add simple top/footer nav's for selecting language
+- add preliminary multilingual support (via Zola)
 
 ## v1.0.0 (2023-05-11)
 
