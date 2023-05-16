@@ -52,10 +52,6 @@ Here are some additional things to know about deployments
 
 The site is designed to be multilingual, and currently offers English and Italian options. English is the default and serves content from the bare [`https://c00p.org/`](https://c00p.org/) path, whereas all others serve content behind a prefix consisting of the language's 2-letter abbreviation, e.g. [`https://c00p.org/it/`](https://c00p.org/it/) for Italian.
 
-Content is routed using a page rule which checks for the client's `Accept-Language` header:
-
-![Cloudflare page rule to route the Italian speakers to Italian language version of site](/.site-documentation/cloudflare-multilingual-page-rule.png)
-
 ## Notes:
 
 * This site was initially generated using a [GitHub template](https://github.com/asimpletune/zola-tailwindcss) for making zola static sites that work well with tailwindcss.
