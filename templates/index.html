@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
 
 {# Variable declarations #}
-{% set lang_ext = section.extra.lang_ext %}
+{% set lang_ext = "." ~ lang %}
+{% if lang == config.default_language %}{% set lang_ext = "" %}{% endif %}
 {% set title_obj = load_data(path="content/snippets/01_title" ~ lang_ext ~ ".toml", format="toml") %}
 {% set intro_md = load_data(path="content/snippets/02_intro" ~ lang_ext ~ ".txt") %}
 {% set waitlist_md = load_data(path="content/snippets/waitlist" ~ lang_ext ~ ".txt") %}
@@ -39,14 +40,18 @@
 </head>
 
 <body class="bg-blue-700">
-  <header class="max-w-7xl mx-auto overflow-hidden">
-    {{ section.content | safe }}
+  <header class="max-w-7xl mx-auto">
+    <ul class="hidden md:flex gap-2 absolute top-0 right-4 text-lg text-yellow-100  font-playfair-display underline">
+      <li><a href="/?set-lang=en">English</a>
+      </li>
+      <li>|</li>
+      <li><a href="/?set-lang=it">Italiano</a>
+      </li>
+    </ul>
     <h1 class="max-w-prose
       mx-4 mt-10 lg:mx-20
       flex flex-col
       gap-3">
-      {# <span class="font-playfair-display font-bold text-[#EE95F5]
-      text-4xl md:text-7xl">For some things...</span> #}
       <span class="font-playfair-display text-[#FEF3C7]
       text-5xl sm:text-8xl lg:text-9xl">{{ title_obj.p1 }}</span>
       <span class="mt-8 lg:mt-20 font-playfair-display font-bold text-[#EE95F5]
