@@ -14,18 +14,62 @@ export function onRequest(context) {
         .prepare('INSERT INTO waitlist (name, email, message) VALUES (?1, ?2, ?3)')
       let stmt = ps.bind(entries.name, entries.email, entries.message)
       return stmt.run()
-        .then(_ => { return Response.redirect(url.toString(), 302) })
+        .then(dbRep => sendEmail(entries.name, entries.email, entries.message, dbRep))
+        .then(_ => Response.redirect(url.toString(), 302))
         .catch(e => {
           // TODO: store errors somewhere
           console.log({
             message: e.message,
             cause: e.cause.message,
           })
-          return Response.redirect(url.toString(), 302)
+          return sendEmail(entries.name, entries.email, entries.message, {
+            message: e.message,
+            cause: e.cause.message,
+          })
+            .then(_ => Response.redirect(url.toString(), 302))
         })
     })
 
   } else {
     return new Error("Method not allowed")
   }
+}
+
+function sendEmail(name, email, message, dbRep) {
+  let emailRequest = new Request("https://api.mailchannels.net/tx/v1/send", {
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json",
+    },
+    "body": JSON.stringify({
+      "personalizations": [
+        {
+          "to": [{
+            "email": "spence@c00p.org",
+            "name": "Spencer Scorcelletti",
+          }]
+        }
+      ],
+      "from": {
+        "email": "waitlist@c00p.org",
+        "name": "c00p.org waitlist",
+      },
+      "subject": `Waitlist signup a ${dbRep.success ? 'success' : 'failure'}`,
+      "content": [{
+        "type": "text/plain",
+        "value":
+          `Hi Spence,
+
+          You got a new signup for c00p.org!
+
+          * ${name} from
+          * ${email}
+          * wrote: ${message}
+
+          the DB response was:
+          ${JSON.stringify(dbRep)}`
+      }],
+    }),
+  })
+  return fetch(emailRequest)
 }
