@@ -18,7 +18,7 @@ export function onRequest(context) {
           + 'VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)')
       let stmt = ps.bind(entries.name, entries.email, entries.message, Date.now(), cfRay, xRealIp, cf.continent, cf.country, cf.city, cf.isEUCountry, cf.botManagement.score, JSON.stringify(cf))
       return stmt.run()
-        .then(dbRep => sendEmail(entries.name, entries.email, entries.message, dbRep))
+        .then(dbRep => sendEmail(entries.name, entries.email, entries.message, cfRay, dbRep))
         .then(_ => Response.redirect(url.toString(), 302))
         .catch(e => {
           // TODO: store errors somewhere
@@ -26,7 +26,7 @@ export function onRequest(context) {
             message: e.message,
             cause: e.cause.message,
           })
-          return sendEmail(entries.name, entries.email, entries.message, {
+          return sendEmail(entries.name, entries.email, entries.message, cfRay, {
             message: e.message,
             cause: e.cause.message,
           })
@@ -39,7 +39,7 @@ export function onRequest(context) {
   }
 }
 
-function sendEmail(name, email, message, dbRep) {
+function sendEmail(name, email, message, cfRay, dbRep) {
   let emailRequest = new Request("https://api.mailchannels.net/tx/v1/send", {
     "method": "POST",
     "headers": {
@@ -61,7 +61,7 @@ function sendEmail(name, email, message, dbRep) {
       "subject": `A new c00p.org waitlist signup ${dbRep.success ? 'succeeded' : 'failed'}`,
       "content": [{
         "type": "text/plain",
-        "value": `Hi Spence, \n\nYou got a new signup for c00p.org!\n\n* name: ${name} \n* email: ${email} \n* wrote: ${message}\n\nthe DB response was:\n${JSON.stringify(dbRep)}\n\nSincerely,\n\n- The c00p.org waitlist 🐸🎉`
+        "value": `Hi Spence, \n\nYou got a new signup for c00p.org!\n\n* name: ${name} \n* email: ${email} \n* wrote: ${message}\n\nthe DB response was:\n${JSON.stringify(dbRep)}\n\nSincerely,\n\n- The c00p.org waitlist 🐸 🎉\n\nP.S: cf-ray: ${cfRay}`
       }],
     }),
   })
