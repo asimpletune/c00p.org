@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.1 (2023-05-18)
+
+- add support to receive an email when someone has signed up for waitlist
+
 ## v1.0.0 (2023-05-11)
 
 - add form for people to join waitlist
