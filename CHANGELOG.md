@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.2 (2023-06-03)
+
+- add simple nav's for selecting/changing preferred language
+- add multilingual support
+
 ## v1.0.1 (2023-05-18)
 
 - add a row to a an error table if there's a problem during waitlist signup
