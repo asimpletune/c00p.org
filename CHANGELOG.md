@@ -1,9 +1,9 @@
 # Changelog
 
-## v1.0.1 (TODO)
+## v1.0.1 (2023-06-03)
 
-- add simple top/footer nav's for selecting language
-- add preliminary multilingual support (via Zola)
+- add simple nav's for selecting/changing preferred language
+- add multilingual support
 
 ## v1.0.0 (2023-05-11)
 
