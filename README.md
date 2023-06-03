@@ -1,8 +1,8 @@
 # c00p.org
 
-Just an alternative to home ownership, by helping people organize so they can share the collective savings. [https://c00p.org](https://c00p.org)
+A project to find people who are interested in alternative path to owning their first home, by starting a housing cooperative. Website: [https://c00p.org](https://c00p.org)
 
-![c00p.org's open graph social preview (horizontal)](/static/illo/mockup_social-banner.jpg)
+![c00p.org's open graph social preview (horizontal)](/static/illo/mockup_social-banner.jpg "I don't mind sharing, do you?")
 
 ## Usage
 
@@ -52,11 +52,30 @@ Here are some additional things to know about deployments
 
 The site is designed to be multilingual, and currently offers English and Italian options. English is the default and serves content from the bare [`https://c00p.org/`](https://c00p.org/) path, whereas all others serve content behind a prefix consisting of the language's 2-letter abbreviation, e.g. [`https://c00p.org/it/`](https://c00p.org/it/) for Italian. Any URL from `/it/` and below will be served regardless of language pref. In other words, language pref only matters when you visit the default language path, i.e. `/`.
 
-If you do visit the default language path, then a redirect is performed based on your language preferences. The logic for handling the redirects is not contained within the source code, so they'll be documented here. Redirects are as follows:
+### How to add a translation:
+
+Here's an example of how the Italian translation was added to the home page.
+
+```txt
+# this is the original file that has the content for the homepage
+/content/_index.md
+
+# this is the same file but translated to italian
+/content/_index.it.md
+```
+
+So, to add a translation, you find what you want to translate, then add a new file with the translation and make sure the new file is named the same but with the two-letter language code before the `.md`.
+
+
+### How the language redirects are performed:
+
+When you visit the default language path (i.e. `/`), then a redirect can be performed based on your language preferences. The logic for handling the redirects is not contained within the source code, so they'll be documented here. Redirects are as follows:
 
 * if `?set-lang` is set to `en` or `it`, a redirect is performed, and the client is asked to update the `pref-lang` 🍪
 * if `pref-lang` 🍪 is set to `en` or `it`, a redirect is performed
 * if neither `?set-lang`, nor 🍪 `pref-lang`, then `Accepted-Language` header is chosen, and client is asked to update the `pref-lang` 🍪
+
+Note: the redirects only happen online, and not when the site is being developed locally. To see the changes locally, you just go to the path that you want, but prefix it with the two-letter language code, i.e. `localhost:8787/it/thanks`.
 
 ## Notes:
 
