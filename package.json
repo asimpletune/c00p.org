@@ -1,7 +1,7 @@
 {
   "name": "c00p.org",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A website to promote cooperatives as an alternative to home ownership, by helping people organize so they can share the collective savings.",
   "scripts": {
     "build": "zola build && npx tailwindcss -i ./public/input.css -o ./public/style.css -m",
