@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "A website to promote cooperatives as an alternative to home ownership, by helping people organize so they can share the collective savings.",
   "scripts": {
-    "build": "zola build && npx tailwindcss -i ./public/input.css -o ./public/style.css -m",
+    "build": "zola build --base-url ${https://c00p.org:-'localhost'} && npx tailwindcss -i ./public/input.css -o ./public/style.css -m",
     "serve": "zola serve --interface 0.0.0.0 & npx tailwindcss -i ./public/input.css -o ./public/style.css --watch && wait",
     "serve-browse": "zola serve --open --interface 0.0.0.0 & npx tailwindcss -i ./public/input.css -o ./public/style.css --watch && wait",
     "test": "echo \"Error: no test specified\" && exit 1"
