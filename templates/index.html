@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ lang }}">
 
-{# Variable declarations #}
-{% set lang_ext = "." ~ lang %}
-{% if lang == config.default_language %}{% set lang_ext = "" %}{% endif %}
-{% set title_obj = load_data(path="content/snippets/01_title" ~ lang_ext ~ ".toml", format="toml") %}
-{% set intro_md = load_data(path="content/snippets/02_intro" ~ lang_ext ~ ".txt") %}
-{% set waitlist_md = load_data(path="content/snippets/waitlist" ~ lang_ext ~ ".txt") %}
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,8 +33,8 @@
 </head>
 
 <body class="bg-blue-700">
-  <header class="max-w-7xl mx-auto">
-    <ul class="hidden md:flex gap-2 absolute top-0 right-4 text-lg text-yellow-100  font-playfair-display underline">
+  <nav class="flex justify-end pr-2 pt-2 md:pr-8 md:pt-4">
+    <ul class="flex gap-2 right-4 text-lg text-yellow-100  font-playfair-display underline">
       <li>
         <a href="/?set-lang=en">English</a>
       </li>
@@ -50,68 +43,21 @@
         <a href="/?set-lang=it">Italiano</a>
       </li>
     </ul>
+  </nav>
+  <header class="max-w-7xl mx-auto">
     <h1 class="max-w-prose
       mx-4 mt-10 lg:mx-20
       flex flex-col
       gap-3">
       <span class="font-playfair-display text-[#FEF3C7]
-      text-5xl sm:text-8xl lg:text-9xl">{{ title_obj.p1 }}</span>
+      text-5xl sm:text-8xl lg:text-9xl">{{section.extra.heading}}</span>
       <span class="mt-8 lg:mt-20 font-playfair-display font-bold text-[#EE95F5]
-      text-4xl sm:text-7xl lg:text-8xl">{{ title_obj.p2 }}</span>
+      text-4xl sm:text-7xl lg:text-8xl">{{ section.extra.subheading }}</span>
     </h1>
     <img class="w-full md:w-[110%] -mt-20 md:-mt-52 lg:-mt-64" src="/illo/demo-structure@0.5x.webp" alt="">
   </header>
   <article class="my-[8vh] mx-auto px-4 prose md:prose-xl prose-invert">
-    <section id="intro">
-      {{ intro_md | markdown | safe }}
-    </section>
-    <section id="waitlist">
-      {{ waitlist_md | markdown | safe }}
-
-      <form action="/waitlist/submit" method='post'>
-        <div class="
-        flex flex-col
-        gap-4
-        md:grid
-        md:grid-cols-2">
-
-          {# Name #}
-          <label>
-            <span class="font-bold
-            text-2xl md:text-3xl">Name</span>
-            <span class="text-red-400 align-top">*</span>
-            <input type="text" required name="name" placeholder="Your Name" class="w-full rounded-lg text-black
-              px-2 py-2
-              md:px-4" />
-          </label>
-
-          {# Email #}
-          <label>
-            <span class="font-bold
-            text-2xl md:text-3xl">Email</span>
-            <span class="text-red-400 align-top">*</span> <input type="email" required name="email"
-              placeholder="YourEmail@gmail.com" class="w-full rounded-lg text-black
-              px-2 py-2
-              md:px-4" />
-          </label>
-
-          {# Optional Message #}
-          <label class="col-span-2">
-            <span class="font-bold
-            text-2xl md:text-3xl">Thoughts?</span>
-            <textarea rows="2" name="message" placeholder="optional"
-              class="w-full rounded-lg text-black px-4 py-2"></textarea>
-          </label>
-
-          {# Send button #}
-          <input type='submit' value='Send' class="
-            col-span-2
-            border border-white rounded-lg
-            px-4 py-2
-            hover:cursor-pointer hover:bg-gray-800/50" />
-        </div>
-      </form>
-    </section>
+    {{ section.content | safe }}
   </article>
 </body>
 
