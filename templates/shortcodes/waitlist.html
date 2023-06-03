@@ -1,0 +1,39 @@
+{% set i18n = section.extra.i18n.waitlist %}
+<form action="/waitlist/submit" method='post'>
+  <div class="
+    flex flex-col
+    gap-4
+    md:grid
+    md:grid-cols-2 first-letter:">
+
+    {# Name #}
+    <label>
+      <span class="font-bold text-2xl md:text-3xl">{{ i18n.name }}</span>
+      <span class="text-red-400 align-top">*</span>
+      <input type="text" required name="name" placeholder="{{ i18n.name_placeholder }}"
+        class="w-full rounded-lg text-black px-2 py-2 md:px-4" />
+    </label>
+
+    {# Email #}
+    <label>
+      <span class="font-bold
+            text-2xl md:text-3xl">{{ i18n.email }}</span>
+      <span class="text-red-400 align-top">*</span> <input type="email" required name="email"
+        placeholder="{{ i18n.email_placeholder }}" class="w-full rounded-lg text-black px-2 py-2 md:px-4" />
+    </label>
+
+    {# Optional Message #}
+    <label class="col-span-2">
+      <span class="font-bold text-2xl md:text-3xl">{{ i18n.thoughts }}</span>
+      <textarea rows="2" name="message" placeholder="{{ i18n.thoughts_placeholder }}"
+        class="w-full rounded-lg text-black px-4 py-2"></textarea>
+    </label>
+
+    {# Send button #}
+    <input type='submit' value='Send' class="
+      col-span-2
+      border border-white rounded-lg
+      px-4 py-2
+      hover:cursor-pointer hover:bg-gray-800/50" />
+  </div>
+</form>
